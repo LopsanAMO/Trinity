@@ -72,20 +72,7 @@ correo = (String)sesionOk.getAttribute("corre");
  </script>
 </head>
 <body>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        
-        <a id="logo-container" class="brand-logo"><img src="sources/img/trinity.jpg" alt="logo" height="62" width="72"></a>
-      <ul class="right hide-on-med-and-down">
-          <li><a id="logo-container" class="brand-logo" href="usuarios.jsp"><img src="sources/img/bm.jpg" alt="logo" height="62" width="92"> </a></li>
-      </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">

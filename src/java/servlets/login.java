@@ -75,27 +75,32 @@ public class login extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String user=request.getParameter("name");
         String clave=request.getParameter("pass");
-        
-        
+        int hacer = 1;
+        try{
+            hacer = Integer.parseInt(request.getParameter("DIY"));
+        }
+        catch(NumberFormatException e){
+            
+        }
+        System.out.println("El numeor que deberia de ser es: " + hacer);
         Usuario u=new Usuario();
         u=u.verificarUsuario(user, clave);
         Usuario w = new Usuario();
-        w = w.verificarUsuario(user, clave);
+        w = w.verificarUsuario2(user, clave);
         
-        System.out.println("omaiga " +((String)(w .getUsuario_user())));
         
-        if(u!=null){
+        if(u!=null && w!=null){
             //El usuario existe en la base de datos y clave correcta
             //Creamos la sesion
             String llo = String.valueOf(u.getLlamadaLocal());
             String lin = String.valueOf(u.getLlamadaInter());
             String water = String.valueOf(u.getAgua());
             String light = String.valueOf(u.getLuz());
-            String tem = String.valueOf(u.getUsuario_temporal());
+            String tem = String.valueOf(w.getUsuario_temporal());
             String correo = u.getUsuario_email();
             HttpSession sesion=request.getSession(true);
             sesion.setAttribute("usuario", u);
-            System.out.println("LA WEAAAAAAA" + (String)(u.getUsuario_temporal()));
+            System.out.println("LA WEAAAAAAA" + (String)(w.getUsuario_temporal()));
             HttpSession sesionOk = request.getSession();
             sesionOk.setAttribute("usuario",user);
             sesionOk.setAttribute("contra", clave);
@@ -105,11 +110,17 @@ public class login extends HttpServlet {
             sesionOk.setAttribute("luz",light);
             sesionOk.setAttribute("temporal",tem);
             sesionOk.setAttribute("corre",correo);
-            response.sendRedirect("usuarios.jsp");
+            if(hacer == 1){
+                response.sendRedirect("usuarios.jsp");
+            }
+            else if(hacer == 2){
+                response.sendRedirect("usuarios.jsp?status=1");
+            }
+            
             System.out.println("TODO OK CO EL INICIO DE SESIONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" );
         }else{
             //El usuario no existe o clave incorrecta
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("login.jsp?error=1");
             
             
         }
@@ -128,7 +139,7 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect("usuarios.jsp?status=1");
     }
 
     /**

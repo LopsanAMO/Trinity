@@ -39,19 +39,14 @@ public class Registrar extends HttpServlet {
         try {
         Class.forName("com.mysql.jdbc.Driver");                 
         URL = "jdbc:mysql://localhost/banco_mexico";
-        
         con = DriverManager.getConnection(URL,userName,password);
         set = con.createStatement();
-
-        System.out.println("Se ha conectado");
+        System.out.println("SE PUDO CONECTAR A LA BASE DE DATOS DESDE EL SERVLET DE REGISTRAR");
         } catch (Exception e) {
-        System.out.println("No se ha conectado");
+        System.out.println("SE PUDO CONECTAR A LA BASE DE DATOS DESDE EL SERVLET DE REGISTRAR");
         }
     }
-    
-    
-     
-       
+         
         
   /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -79,36 +74,25 @@ public class Registrar extends HttpServlet {
             u = u.lost(email);
             if(u==null){
                 System.out.println("El pinche numero es" + tarjeta);
-            
                 InetAddress address = InetAddress.getLocalHost();
                 String sHostName;
                 sHostName = address.getHostName();
-                            byte[] bIPAddress = address.getAddress();
-
-                // IP en formato String
+                byte[] bIPAddress = address.getAddress();
                 String sIPAddress = "";
-
                 for (int x=0; x<bIPAddress.length; x++) {
                   if (x > 0) {
-                    // A todos los numeros les anteponemos
-                    // un punto menos al primero    
                     sIPAddress += ".";
                   }
-                  // Jugamos con los bytes y cambiamos el bit del signo
                   sIPAddress += bIPAddress[x] & 255;	   
                 }
                 System.out.println("ASDSADSADS: "+sHostName + "y " + sIPAddress);
 
-                 // Cogemos la IP 
-
-
-                 String servidorSMTP = "smtp.gmail.com";
+                String servidorSMTP = "smtp.gmail.com";
                 String puerto = "587";
                 String userio = "makiki789@gmail.com";
                 String password = "Elpayasoeso12345";
-
                 String destino = email;
-                String asunto = "Prueba!";
+                String asunto = "Registro!";
                 String url = sIPAddress+":8080/Trinity/login.jsp";
                 String mensaje = "tu usuario es: " + usuario + ", y tu contraseña es: "+ contra + "\n Empieza a disfrutar de tu cuenta y entra a " + url;
 
@@ -123,40 +107,37 @@ public class Registrar extends HttpServlet {
                 Session session = Session.getInstance(props, null);
 
                 try {
-                 MimeMessage message = new MimeMessage(session);
-                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-                   destino));
-                 message.setSubject(asunto);
-                 message.setSentDate(new Date());
-                 message.setText(mensaje);
+                    MimeMessage message = new MimeMessage(session);
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(
+                      destino));
+                    message.setSubject(asunto);
+                    message.setSentDate(new Date());
+                    message.setText(mensaje);
 
-                 Transport tr = session.getTransport("smtp");
-                 tr.connect(servidorSMTP, userio, password);
-                 message.saveChanges();   
-                 tr.sendMessage(message, message.getAllRecipients());
-                 tr.close();
+                    Transport tr = session.getTransport("smtp");
+                    tr.connect(servidorSMTP, userio, password);
+                    message.saveChanges();   
+                    tr.sendMessage(message, message.getAllRecipients());
+                    tr.close();
 
-                } catch (MessagingException e) {
-                 e.printStackTrace();
-      }
-
-
-
+                } 
+                catch (MessagingException e) {
+                    e.printStackTrace();
+                }
 
                 try {
-
-                String sql_inserta = "insert into registro ( Usuario, Contra, Email, Num_tar, CVV, id_lost,temp_us) VALUES(?, ?, ?, ?, ?, ?, ?)";
-
-                PreparedStatement statement = con.prepareStatement(sql_inserta);
-                statement.setString(1,usuario);
-                statement.setString(2,contra);
-                statement.setString(3,email);
-                statement.setString(4,tarjeta);
-                statement.setInt(5,cvv);
-                statement.setString(6,idi);
-                statement.setString(7,tempo);
-                statement.executeUpdate();
-                statement.close();
+                    String sql_inserta = "insert into registro ( Usuario, Contra, Email, Num_tar, CVV, id_lost,temp_us) VALUES(?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = con.prepareStatement(sql_inserta);
+                    statement.setString(1,usuario);
+                    statement.setString(2,contra);
+                    statement.setString(3,email);
+                    statement.setString(4,tarjeta);
+                    statement.setInt(5,cvv);
+                    statement.setString(6,idi);
+                    statement.setString(7,tempo);
+                    statement.executeUpdate();
+                    statement.close();
+                    System.out.println("SE INSERTO EN LA TABLA DE REGISTRO, EN EL SERVLET DE REGISTRO" );
                 } 
                 catch (Exception e) {
                     System.out.println("NO SE INSERTO EN LA TABLA DE REGISTRO, EN EL SERVLET DE REGISTRO" + e);
@@ -172,6 +153,7 @@ public class Registrar extends HttpServlet {
                     statement.setInt(5,luzz);
                     statement.executeUpdate();
                     statement.close();
+                    System.out.println("SE INSERTO EN LA TABLA DE PAGOS, EN EL SERVLET DE REGISTRO");
                 }
                 catch(Exception e){
                     System.out.println("NO SE INSERTO EN LA TABLA DE PAGOS, EN EL SERVLET DE REGISTRO" + e);
@@ -188,20 +170,17 @@ public class Registrar extends HttpServlet {
                     statement.setInt(6,fondo);
                     statement.executeUpdate();
                     statement.close();
+                    System.out.println("SE INSERTO EN LA TABLA DE TARJETA, EN EL SERVLET DE REGISTRO");
                 }
                 catch(Exception e){
                     System.out.println("NO SE INSERTO EN LA TABLA DE TARJETA, EN EL SERVLET DE REGISTRO" + e);
                 }
                 if(1>0){
-                    res.sendRedirect("login.jsp");
+                    res.sendRedirect("login.jsp?error=2");
                    } 
             }
             else{
                 res.sendRedirect("registro.jsp?error=1");
-            }
-            
-            
-            
-            
+            }        
     }
 }

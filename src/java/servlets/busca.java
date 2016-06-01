@@ -34,6 +34,47 @@ public class busca extends HttpServlet {
 
 	}
                 
+                public static LinkedList<Usuario> getconsulta5()
+   {
+      LinkedList<Usuario> listaconsulta=new LinkedList<Usuario>();
+      try
+      {
+        Class.forName("com.mysql.jdbc.Driver");
+        Statement st = null;
+        Connection conexion=null;
+         try{
+             conexion = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/banco_mexico", "root", "n0m3l0");
+         st = conexion.createStatement();
+            System.out.println("Se conecto con exito a la base de datos en el servlet busca");
+         }
+         catch(SQLException e){
+             System.out.println("no se pudo conectar a la base de datos en el servlet busca");
+         }
+         ResultSet rs = st.executeQuery("select * from Servicio_baja");
+         System.out.println("Aqui deberia de haber un consulta "+rs);
+         while (rs.next())
+         {
+            Usuario consultita = new Usuario();
+            consultita.setBaja_id(rs.getInt("id_baja"));
+            consultita.setUsuario_user(rs.getString("Usuario"));
+            consultita.setUsuario_email(rs.getString("correo"));
+            consultita.setBaja_razon(rs.getString("razon"));
+            consultita.setUsuario_temporal(rs.getString("temporal"));
+            listaconsulta.add(consultita);
+            System.out.println("se pudo seleccionar todo de servicio_paga ene el servlet de busca en la getconsulta5");
+         }
+         rs.close();
+         st.close();
+         conexion.close();
+      }
+      catch (Exception e)
+      {
+        System.out.println("no se pudo hacer la seleccion en el servlet de busca en el metodo getconsulta5");
+      }
+      return listaconsulta;
+   
+} 
                 
                 
                   public static LinkedList<Usuario> getconsulta4(String usuario)
@@ -46,16 +87,17 @@ public class busca extends HttpServlet {
             "jdbc:mysql://localhost:3306/banco_mexico", "root", "n0m3l0");
          Statement st = conexion.createStatement();
          System.out.println("Aqui deberia de ir un usuario" + usuario);
-         ResultSet rs = st.executeQuery("select * from registro where Usuario='6ea82ae0704946d9879ce7588636ba45'");
+         ResultSet rs = st.executeQuery("select * from registro where Usuario='"+usuario+"'");
          System.out.println("Aqui deberia de haber un consulta "+st);
          while (rs.next())
          {
+             System.out.println("ESTOY FELIZ"+st);
             Usuario consultita = new Usuario();
 
             consultita.setUsuario_email(rs.getString("Email"));
-            consultita.setUsuario_pass(rs.getString("Tarjeta"));
-        
+            consultita.setUsuario_card(rs.getString("Num_tar"));
             listaconsulta.add(consultita);
+            System.out.println("Se pudo seleccional de registro en el servlet busca en el metodo getconsulta4");
          }
          rs.close();
          st.close();
@@ -63,7 +105,7 @@ public class busca extends HttpServlet {
       }
       catch (Exception e)
       {
-        System.out.println("Se ha conectado a la base de detalleventa");
+        System.out.println("No se conecto a consulta4");
       }
       return listaconsulta;
    
@@ -80,6 +122,7 @@ public class busca extends HttpServlet {
             "jdbc:mysql://localhost:3306/banco_mexico", "root", "n0m3l0");
          Statement st = conexion.createStatement();
          ResultSet rs = st.executeQuery("select * from historial where Usuario='"+usuario+"'");
+          System.out.println("RSTOY AQUI");
          while (rs.next())
          {
             Usuario consultita = new Usuario();
@@ -90,14 +133,16 @@ public class busca extends HttpServlet {
             consultita.setUsuario_cargo(rs.getInt("Cargo"));
             consultita.setUsuario_fecha(rs.getString("Fecha"));
             listaconsulta.add(consultita);
+            System.out.println("TODO OC CON LA WEA DE BUSCAR en el servlet de busca en el metodo getconsulta3");
          }
          rs.close();
          st.close();
          conexion.close();
+         
       }
       catch (Exception e)
       {
-        System.out.println("Se ha conectado a la base de detalleventa");
+        System.out.println("no se ha conectado a la wea del servlet de busca en el metodo getconsulta3");
       }
       
       try
@@ -112,6 +157,7 @@ public class busca extends HttpServlet {
             Usuario consultit = new Usuario();
             consultit.setUsuario_pass(rs.getString("Contra"));
             listaconsulta.add(consultit);
+            System.out.println("Se pudo selecctionar de registro del servlet busca en el metodo get colsulta3");
          }
          rs.close();
          st.close();
@@ -119,7 +165,7 @@ public class busca extends HttpServlet {
       }
       catch (Exception e)
       {
-        System.out.println("Se ha conectado a la base de detalleventa");
+        System.out.println("no se seleccion de registro del servlet busca en el metodo getconsulta3");
       }
       
       
@@ -147,6 +193,7 @@ public class busca extends HttpServlet {
             consultita.setUsuario_cargo(rs.getInt("Cargo"));
             consultita.setUsuario_fecha(rs.getString("Fecha"));
             listaconsulta.add(consultita);
+            System.out.println("se pudo seleccionar de historial en el serblet busca en el metodo getconsulta2");
          }
          rs.close();
          st.close();
@@ -154,7 +201,7 @@ public class busca extends HttpServlet {
       }
       catch (Exception e)
       {
-        System.out.println("Se ha conectado a la base de detalleventa");
+        System.out.println("no se pudo acceder a la tabla de historial en el servlet de busca en el metodo getconsulta2");
       }
       return listaconsulta;
    
@@ -184,13 +231,14 @@ public class busca extends HttpServlet {
             consultita.setUsuario_cargo(rs.getInt("Cargo"));
             consultita.setUsuario_fecha(rs.getString("Fecha"));
             listaconsulta.add(consultita);
+            System.out.println("se pudo hacer la consulta en el servlet de busca en el metodo de getconsulta");
             break;
          }
       }
       catch (SQLException ex){
             ex.printStackTrace();
             consultita=null;
-        System.out.println("NO SE PUDO CONECTAR EXITOSAMENTE A LA TABLA DE HISTORIAL");
+        System.out.println("NO SE PUDO CONECTAR EXITOSAMENTE A LA TABLA DE HISTORIAL del servlet de busca en el metodo getconsulta");
       }
       finally{
             try{

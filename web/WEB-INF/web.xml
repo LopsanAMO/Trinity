@@ -52,6 +52,30 @@
         <servlet-name>error</servlet-name>
         <servlet-class>servlets.error</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizar</servlet-name>
+        <servlet-class>servlets.actualizar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>servlets.admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>login_admin</servlet-name>
+        <servlet-class>servlets.login_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ah</servlet-name>
+        <servlet-class>servlets.ah</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>baja</servlet-name>
+        <servlet-class>servlets.baja</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>down</servlet-name>
+        <servlet-class>servlets.down</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Conexion</servlet-name>
         <url-pattern>/Conexion</url-pattern>
@@ -107,6 +131,30 @@
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizar</servlet-name>
+        <url-pattern>/actualizar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>login_admin</servlet-name>
+        <url-pattern>/login_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ah</servlet-name>
+        <url-pattern>/ah</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>baja</servlet-name>
+        <url-pattern>/baja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>down</servlet-name>
+        <url-pattern>/down</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

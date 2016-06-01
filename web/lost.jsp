@@ -84,11 +84,11 @@ body {
                 <div class="row">
                   <div class="input-field col s6">
                       <input id="email" type="password" name="email" class="validate" >
-                    <label for="email">Email</label>
+                    <label for="email">Contraseña</label>
                   </div>
                   <div class="input-field col s6">
                       <input id="email2" type="password" name="email" class="validate" >
-                    <label for="email2">Repita Contraseña</label>
+                    <label for="email2">Confirmar contraseña</label>
                   </div>
                 </div>
                      <center><button class="btn waves-effect waves-light" id="fantasma" type="submit" >Recuperar

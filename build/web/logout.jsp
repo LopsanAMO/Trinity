@@ -38,9 +38,10 @@ contra = (String)sesionOk.getAttribute("contra");
         });
     </script>
     <body>
-        <form name="hola" action="login">
+        <form name="hola" action="login" method="post">
             <input name="name" value="<%=usuario%>">
             <input name="pass" value="<%=contra%>">
+            <input name="DIY" value="2" type="hidden">
         </form>
     </body>
 </html>

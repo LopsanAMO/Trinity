@@ -102,9 +102,14 @@ public class pagar extends HttpServlet {
             } 
             catch (Exception e) {
                 System.out.println("NO SE INERTO NADA AEN LA TABLA DE PAGOS" + e);
+                response.sendRedirect("usuarios.jsp?status=2");
             }
             String tele = "telefono";
-                 try {
+            if(can==0){
+                     System.out.println("LA WEA NO SE PAGOOOOOOOOOOOOOOOOOOO");
+                }
+                else{
+                    try {
         
             String sql_inserta = "insert into historial (Usuario, Email, Tarjeta, Pago, Cargo) VALUES(?, ?, ?, ?, ?)" ;
             
@@ -120,7 +125,10 @@ public class pagar extends HttpServlet {
             } 
             catch (Exception e) {
                 System.out.println("NO SE INERTO NADA AEN LA TABLA DE HISTORIAL" + e);
+                response.sendRedirect("usuarios.jsp?status=2");
             }
+                }
+                 
                  
              }
             else{
@@ -135,9 +143,13 @@ public class pagar extends HttpServlet {
             } 
             catch (Exception e) {
                 System.out.println("NO SE INSERTO NADA EN LA TABLA DE PAGOS DE " + doit + "" + e);
+                response.sendRedirect("usuarios.jsp?status=2");
             }
-                
-                try {
+                if(can==0){
+                     System.out.println("LA WEA NO SE PAGOOOOOOOOOOOOOOOOOOO");
+                }
+                else{
+                    try {
         
             String sql_inserta = "insert into historial (Usuario, Email, Tarjeta, Pago, Cargo) VALUES(?, ?, ?, ?, ?)" ;
             
@@ -153,12 +165,15 @@ public class pagar extends HttpServlet {
             } 
             catch (Exception e) {
                 System.out.println("NO SE INERTO NADA AEN LA TABLA DE HISTORIAL" + e);
+                response.sendRedirect("usuarios.jsp?status=2");
             }
+                }
+                
                 
             }
              
         }
-        else{
+        else if(total <= 0){
             response.sendRedirect("usuarios.jsp?error_pago=1");
         }
         }

@@ -11,6 +11,7 @@
 <%@ page session="true" %>
 <%
 String usuario = "";
+String error = request.getParameter("error");
 HttpSession sesionOk = request.getSession();
 if (sesionOk.getAttribute("usuario") == null) {
 %>
@@ -34,6 +35,7 @@ obligatorio identificarse"/>
         <title>Registro de Usuarios</title>
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="sources/css/materialize.min.css"  media="screen,projection"/>
+      <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <link href="sources/css/style2.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -78,11 +80,24 @@ body {
 
   
       </style>
+       <script type="text/javascript">
+       $(document).ready(function(){
+            if($("#hola").val()==1){
+                     Materialize.toast('Correo y/o contraseña erroneos', 4000)
+                }
+                if($("#hola").val()==2){
+                     Materialize.toast('Se ah mandado un correo al email establecido con tu usuario y contraseña, para que puedas empezar a disfrutass de nuestros servicios', 9000)
+                }
+       });
+         
+        
+     
+      </script>
     </head>
     <body>
         
         
-      
+         <input type="hidden" id="hola" value="<%=error%>">
        
         <div id="login-page" class="row">
     <div class="col s12 z-depth-4 card-panel">
@@ -113,6 +128,7 @@ body {
               <label for="remember-me">Remember me</label>
           </div>
         </div>
+        <input name="DIY" values="1" type="hidden">
         <div class="row">
           <div class="input-field col s12">
              

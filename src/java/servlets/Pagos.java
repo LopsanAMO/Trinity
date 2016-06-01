@@ -50,23 +50,25 @@ public class Pagos{
                 u.setUsuario_card(rs.getString("Num_tar"));
                 u.setUsuario_cvv(rs.getInt("CVV"));
                 u.setUsuario_aidi(rs.getInt("Id_usu"));
-                System.out.println("Se encontro usuario");
-                
+                System.out.println("SE PUDO SELECIONAR DESDE EL SERVLET DE PAGOS");
                 break;
             }
-        }catch(SQLException ex){
+        }
+        catch(SQLException ex){
+            System.out.println("NO SE PUDO SELECIONAR DESDE EL SERVLET DE PAGOS" + ex);
             ex.printStackTrace();
             u=null;
-        }finally{
+        }
+        finally{
             try{
                 rs.close();
                 pr.close();
                 rs.close();
-            }catch(SQLException ex){
+            }
+            catch(SQLException ex){
 
             }
         }
         return u;
     }
-
 }

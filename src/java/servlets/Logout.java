@@ -13,16 +13,11 @@ public class Logout extends HttpServlet {
     //Ya sea que el método sea por GET o POST, cerraremos la sesion.
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession sesion = request.getSession(true);
-        
-        //Cerrar sesion
         sesion.invalidate();
-        
-        //Redirecciono a index.jsp
-        response.sendRedirect("index.html");
+        response.sendRedirect("usuarios.jsp");
     }
  
     @Override

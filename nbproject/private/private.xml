@@ -3,16 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/src/java/servlets/pagar.java</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/historial.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/pagos.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/src/java/servlets/busca.java</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/usuarios.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/logout.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/contacto.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/src/java/servlets/Usuario.java</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/admin_historial.jsp</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/registro.jsp</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/index_admin.jsp</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/administrador.jsp</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/lost.jsp</file>
+            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/baja.jsp</file>
             <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/web/about.jsp</file>
-            <file>file:/C:/Users/antonio/Documents/NetBeansProjects/Trinity/src/java/servlets/Logout.java</file>
         </group>
     </open-files>
 </project-private>

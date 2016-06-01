@@ -42,7 +42,7 @@ contra = (String)sesionOk.getAttribute("contra");
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menú</i></a>
     </div>
   </nav>
 
@@ -56,7 +56,7 @@ contra = (String)sesionOk.getAttribute("contra");
           <br>
           <br>
           <br>
-          <a href="usuarios.jsp"><h5>Empieza tu experiencia ahora!</h5></a>
+          <a href="usuarios.jsp"><h5>¡Empieza tu experiencia ahora!</h5></a>
         </div>
        
         <br><br>
@@ -148,7 +148,7 @@ contra = (String)sesionOk.getAttribute("contra");
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Y Aun Hay Mas</h5>
+          <h5 class="white-text">Y Aún Hay Más</h5>
           <p class="grey-text text-lighten-4">Porque eres parte importante de nosotros y queremos mantenernos en contacto</p>
 
 

@@ -114,7 +114,9 @@ body {
 
       </style>
       <script type="text/javascript">
-           
+            function enviar(form){
+            form.submit();
+          }
       var saldo=6000.00;    
       function convertidor()
       {
@@ -135,18 +137,20 @@ body {
       </script>
     </head>
     <body>
-        <nav>
+<nav>
           <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo" id="logomoto"> <b>Auto</b>Bank</a>
+            <a href="usuarios.jsp" class="brand-logo" id="logomoto"> <b>Auto</b>Bank</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="contacto.html" id="tamano-font">Modificacion de datos</a></li>
+              <li><a href="contacto.jsp" id="tamano-font">Modificacion de datos</a></li>
              <!-- <li><a href="pago.html" id="tamano-font">Pago de Servicios</a></li>-->
-              <li><a href="index.html" id="tamano-font">Acerca de Banco de México</a></li>
-              <li><a href="index.html" id="tamano-font">Contacto</a></li>
+              <li><a href="about.jsp" id="tamano-font">Acerca de Banco de México</a></li>
               <li><a href="javascript:enviar(ip);" id="tamano-font">Logout</a></li>
             </ul>
           </div>
-        </nav
+        </nav>
+        <form method="post" name="ip" action="Logout">
+            <input type="hidden"  value="elipdelUser">
+        </form>
         <br>
         <br>
         <br>
@@ -164,7 +168,7 @@ body {
                     
                        <% 
 LinkedList<Usuario> lista = busca.getconsulta3(usuario);
-for (int i=0;i<lista.size();i++)
+for (int i=0;i<lista.size()-1;i++)
 {
    
                                 
@@ -205,7 +209,7 @@ for (int i=0;i<lista.size();i++)
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="sources/js/plugins.js"></script>   
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="sources/js/materialize.min.js"></script
+    <script type="text/javascript" src="sources/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="sources/js/materialize.min.js"></script>
     </body>

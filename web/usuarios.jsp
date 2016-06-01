@@ -14,6 +14,7 @@ String usuario = "";
 HttpSession sesionOk = request.getSession();
 String error = "";
 error = request.getParameter("error_pago");
+String estado= estado = request.getParameter("status");
 if (sesionOk.getAttribute("usuario") == null) {
 %>
 <jsp:forward page="login.jsp">
@@ -34,7 +35,7 @@ usuario = (String)sesionOk.getAttribute("usuario");
         
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="sources/css/materialize.min.css"  media="screen,projection"/>
-      <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script>
           function enviar(form){
@@ -44,7 +45,21 @@ usuario = (String)sesionOk.getAttribute("usuario");
       <script>
           $(document).ready(function(){
               if($("#hola").val()==1){
-                   Materialize.toast('El pago con la tarjeta fue rechazado, checa tu metodo de pago, o cambialo', 4000)
+                   Materialize.toast('El pago con la tarjeta fue rechazado, checa tu metodo de pago, o cambialo', 7000)
+              }
+              if($("#stado").val()==1){
+                  
+                  Materialize.toast('Tu pago fue realizado correctamente!', 7000)
+                  console.log("HOLIS")
+              }
+              else if($("#stado").val()==2){
+                  Materialize.toast('El pago con la tarjeta fue rechazado, checa tu metodo de pago, o cambialo', 7000)
+              }
+              else if($("#stado").val()==3){
+                  Materialize.toast('Correo perfectamente actualizado, te llegara un correo de confirmacion y/o cancelacion. Te recomendamos que cierres sesion e inicies de nuevo para poder actualizar tus datos', 8000)
+              }
+              else if($("#stado").val()==4){
+                  Materialize.toast('Contraseña perfectamente actualizada, te llegara un correo de confirmacion. Te recomendamos que cierres sesion e inicies de nuevo para poder actualizar tus datos', 8000)
               }
              
           });
@@ -104,10 +119,9 @@ body {
           <div class="nav-wrapper">
             <a href="usuarios.jsp" class="brand-logo" id="logomoto"> <b>Auto</b>Bank</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="login" id="tamano-font">Modificacion de datos</a></li>
+              <li><a href="contacto.jsp" id="tamano-font">Modificacion de datos</a></li>
              <!-- <li><a href="pago.html" id="tamano-font">Pago de Servicios</a></li>-->
-              <li><a href="index.html" id="tamano-font">Acerca de Banco de México</a></li>
-              <li><a href="index.html" id="tamano-font">Contacto</a></li>
+              <li><a href="about.jsp" id="tamano-font">Acerca de Banco de México</a></li>
               <li><a href="javascript:enviar(ip);" id="tamano-font">Logout</a></li>
             </ul>
           </div>
@@ -116,6 +130,8 @@ body {
         <form method="post" name="ip" action="Logout">
             <input type="hidden"  value="elipdelUser">
         </form>
+        <input id="hola" type="hidden" value="<%=error%>" >
+        <input id="stado" type="hidden" value="<%=estado%>" >
         <br>
  		<div class="Contenido_total">
  			<header>
@@ -254,6 +270,6 @@ body {
               });
         </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="sources/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     </body>
 </html>
